@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mercedes-Benz A-Class Limousine | Premium Compact Luxury</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --mb-silver-primary: #9CA3AF;      /* Tech Silver */
+            --mb-tech-dark: #111827;           /* Tech Dark Blue */
+            --mb-premium-white: #F9FAFB;       /* Premium White */
+            --mb-blue-accent: #3B82F6;         /* Blue Accent */
+            --mb-graphite: #374151;           /* Graphite Grey */
+            --mb-cyan: #06B6D4;               /* Cyan Blue */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--mb-tech-dark);
+            color: var(--mb-premium-white);
+            overflow-x: hidden;
+        }
+
+        /* Modern Navbar */
+        .modern-navbar {
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(55, 65, 81, 0.95) 100%);
+            box-shadow: 0 2px 30px rgba(59, 130, 246, 0.2);
+            padding: 0;
+            transition: all 0.5s ease;
+            border-bottom: 1px solid rgba(156, 163, 175, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .modern-navbar.scrolled {
+            background: rgba(17, 24, 39, 0.98);
+            box-shadow: 0 4px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .navbar-brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+        }
+
+        .brand-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--mb-silver-primary);
+            transition: all 0.5s ease;
+            filter: drop-shadow(0 0 10px rgba(156, 163, 175, 0.3));
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.1) rotate(360deg);
+            box-shadow: 0 0 20px rgba(156, 163, 175, 0.5);
+        }
+
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--mb-premium-white) 0%, var(--mb-silver-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .nav-link {
+            color: var(--mb-premium-white) !important;
+            font-weight: 400;
+            padding: 1rem 1.5rem !important;
+            position: relative;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--mb-silver-primary);
+            transition: width 0.4s ease;
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 80%;
+        }
+
+        .nav-link:hover {
+            color: var(--mb-silver-primary) !important;
+            transform: translateY(-2px);
+            text-shadow: 0 0 20px rgba(156, 163, 175, 0.3);
+        }
+
+        /* Hero Section */
+        .aclass-hero {
+            position: relative;
+            min-height: 80vh;
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(59, 130, 246, 0.1)), url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .aclass-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 50%, transparent 0%, rgba(6, 182, 212, 0.1) 70%, transparent 100%);
+            animation: cyanPulse 8s infinite alternate;
+        }
+
+        @keyframes cyanPulse {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.3; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .aclass-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--mb-premium-white);
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s ease;
+            letter-spacing: 1px;
+        }
+
+        .aclass-subtitle {
+            font-size: 1.5rem;
+            color: var(--mb-silver-primary);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tech Stats Section */
+        .tech-stats {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(17, 24, 39, 0.8) 100%);
+            padding: 3rem 0;
+            border-radius: 15px;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(156, 163, 175, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .tech-stats::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--mb-silver-primary), transparent, var(--mb-silver-primary));
+            border-radius: 15px;
+            z-index: -1;
+            animation: silverBorder 4s linear infinite;
+        }
+
+        @keyframes silverBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 40px;
+            background: rgba(156, 163, 175, 0.2);
+        }
+
+        .stat-item:last-child::after {
+            display: none;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--mb-silver-primary);
+            margin-bottom: 0.3rem;
+            text-shadow: 0 0 20px rgba(156, 163, 175, 0.3);
+            font-family: 'Courier New', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--mb-premium-white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        /* Main Car Image */
+        .main-car-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            transition: all 0.6s ease;
+            margin: 3rem 0;
+            position: relative;
+            border: 2px solid rgba(156, 163, 175, 0.3);
+        }
+
+        .main-car-image:hover {
+            transform: scale(1.01);
+            box-shadow: 0 30px 80px rgba(59, 130, 246, 0.2);
+            border-color: var(--mb-silver-primary);
+        }
+
+        .main-car-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .main-car-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .aclass-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(55, 65, 81, 0.7);
+            color: var(--mb-silver-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 10;
+            border: 1px solid rgba(156, 163, 175, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Video Section */
+        .aclass-video-section {
+            background: linear-gradient(135deg, var(--mb-tech-dark) 0%, #1F2937 100%);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .aclass-video-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(6, 182, 212, 0.05), transparent);
+            animation: shimmer 4s infinite;
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-wrapper {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            transition: all 0.6s ease;
+            border: 2px solid rgba(156, 163, 175, 0.3);
+        }
+
+        .video-wrapper:hover {
+            transform: scale(1.01);
+            box-shadow: 0 30px 80px rgba(59, 130, 246, 0.2);
+            border-color: var(--mb-silver-primary);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--mb-premium-white);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--mb-silver-primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--mb-silver-primary);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* Gallery Sections */
+        .gallery-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #0F172A 0%, var(--mb-graphite) 100%);
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: all 0.5s ease;
+            height: 280px;
+            background: var(--mb-graphite);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.15);
+            border-color: rgba(156, 163, 175, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(17, 24, 39, 0.9), transparent);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-title {
+            color: var(--mb-silver-primary);
+            font-size: 1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Features Section */
+        .aclass-features {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(17, 24, 39, 0.8) 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            border: 1px solid rgba(156, 163, 175, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--mb-silver-primary);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-item:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-5px);
+            border-color: var(--mb-silver-primary);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .feature-label {
+            color: var(--mb-silver-primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .feature-value {
+            color: var(--mb-premium-white);
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+
+        /* Button Styling */
+        .btn-aclass-primary {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(156, 163, 175, 0.1) 100%);
+            color: var(--mb-silver-primary);
+            border: 1px solid var(--mb-silver-primary);
+            padding: 1rem 2.5rem;
+            border-radius: 25px;
+            font-weight: 400;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-aclass-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(156, 163, 175, 0.1), transparent);
+            transition: all 0.8s ease;
+        }
+
+        .btn-aclass-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-aclass-primary:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(156, 163, 175, 0.2) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+            color: var(--mb-premium-white);
+        }
+
+        .btn-aclass-outline {
+            background: transparent;
+            color: var(--mb-silver-primary);
+            border: 1px solid var(--mb-silver-primary);
+            padding: 1rem 2.5rem;
+            border-radius: 25px;
+            font-weight: 400;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-aclass-outline:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+            color: var(--mb-premium-white);
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 4rem 0;
+            flex-wrap: wrap;
+        }
+
+        /* Modern Footer */
+        .modern-footer {
+            background: linear-gradient(135deg, #0B1120 0%, var(--mb-tech-dark) 100%);
+            color: var(--mb-silver-primary);
+            padding: 4rem 0 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(156, 163, 175, 0.2);
+        }
+
+        .modern-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--mb-silver-primary), transparent);
+        }
+
+        .footer-brand {
+            font-size: 1.8rem;
+            font-weight: 300;
+            background: linear-gradient(135deg, var(--mb-premium-white) 0%, var(--mb-silver-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-heading {
+            color: var(--mb-premium-white);
+            font-weight: 400;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 1px;
+            background: var(--mb-silver-primary);
+        }
+
+        .footer-link {
+            color: var(--mb-silver-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 0.2rem 0;
+            position: relative;
+            font-weight: 300;
+            font-size: 0.9rem;
+        }
+
+        .footer-link::before {
+            content: '›';
+            position: absolute;
+            left: -15px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: var(--mb-silver-primary);
+        }
+
+        .footer-link:hover {
+            color: var(--mb-premium-white);
+            padding-left: 15px;
+        }
+
+        .footer-link:hover::before {
+            opacity: 1;
+            left: 0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--mb-silver-primary);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(156, 163, 175, 0.2);
+        }
+
+        .social-icon:hover {
+            background: var(--mb-silver-primary);
+            color: var(--mb-tech-dark);
+            transform: translateY(-3px) rotate(360deg);
+            border-color: var(--mb-silver-primary);
+            box-shadow: 0 5px 20px rgba(156, 163, 175, 0.3);
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .aclass-title {
+                font-size: 2.8rem;
+            }
+            
+            .aclass-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .stat-item::after {
+                display: none;
+            }
+            
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .aclass-features {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .aclass-title {
+                font-size: 2.2rem;
+            }
+            
+            .aclass-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-aclass-primary, .btn-aclass-outline {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .aclass-title {
+                font-size: 1.8rem;
+            }
+            
+            .stat-value {
+                font-size: 1.6rem;
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+        }
+
+        /* Silver Particles Animation */
+        .silver-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--mb-silver-primary);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        /* Loading Fallback */
+        .image-fallback {
+            background: linear-gradient(135deg, var(--mb-graphite) 0%, #2A3345 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(156, 163, 175, 0.3);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        /* Tech Counter */
+        .tech-counter {
+            font-family: 'Courier New', monospace;
+            font-size: 2.5rem;
+            color: var(--mb-silver-primary);
+            text-shadow: 0 0 10px rgba(156, 163, 175, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Silver Particles Animation -->
+<div class="silver-particles" id="particles"></div>
+
+<!-- Modern Navbar -->
+<nav class="navbar navbar-expand-lg modern-navbar sticky-top">
+    <div class="container">
+        <div class="navbar-brand-container">
+            <img src="image/logo.jpg" class="brand-logo" alt="Mercedes-Benz Logo" onerror="this.style.display='none'">
+            <a class="navbar-brand" href="Mercedes-Benz.htm">MERCEDES-BENZ</a>
+        </div>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="our_models.html">Our Models</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking.html">Buy Online</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="service.html">Service</a>
+                </li>
+            </ul>
+
+            <form class="d-flex" role="search">
+                <button class="btn-aclass-primary" type="button" onclick="window.location.href='booking.html'">Configure A-Class</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="aclass-hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="aclass-title">A-Class Limousine</h1>
+            <p class="aclass-subtitle">Premium compact luxury for every day.</p>
+            
+            <div class="tech-stats">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-value tech-counter" data-target="270">0</div>
+                            <div class="stat-label">Torque (Nm) @ 2000–3500 rpm</div>
+                            <div class="stat-value tech-counter mt-2" data-target="8.3">0</div>
+                            <div class="stat-label">0-100 km/h acceleration</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-value tech-counter" data-target="120">0</div>
+                            <div class="stat-label">Power (kW) @ 5500 rpm</div>
+                            <div class="stat-value tech-counter mt-2" data-target="163">0</div>
+                            <div class="stat-label">Horsepower (hp)</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-value tech-counter" data-target="230">0</div>
+                            <div class="stat-label">Top Speed (km/h)</div>
+                            <div class="stat-label mt-2" style="font-size: 0.8rem;">Technical specifications of A 200</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+    <!-- Main Car Image -->
+    <div class="main-car-image">
+        <div class="aclass-badge">PREMIUM COMPACT</div>
+        <img src="image/li.jpg" alt="A-Class Limousine" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='A-CLASS LIMOUSINE';">
+    </div>
+
+    <!-- Design Introduction -->
+    <div class="text-center my-5">
+        <h2 class="section-title">The Design of the A-Class Limousine</h2>
+        <p class="section-subtitle">Modern luxury meets compact efficiency</p>
+    </div>
+
+    <!-- Video Section -->
+    <div class="aclass-video-section">
+        <div class="video-container">
+            <div class="video-wrapper">
+                <video controls loop muted playsinline poster="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80">
+                    <source src="video/E-Class.mp4" type="video/mp4">
+                    <source src="video/E-class.ogg" type="video/ogg">
+                    Your browser does not support HTML video.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exterior Gallery -->
+    <div class="gallery-section">
+        <h3 class="section-title">Exterior</h3>
+        <p class="section-subtitle">Modern design with sophisticated details</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="image/star.jpg" alt="Star Grille" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='STAR GRILLE';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Signature Star Grille</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="image/light.jpg" alt="LED Lights" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='LED LIGHTING';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Full-LED Headlights</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="image/alloy.jpg" alt="Alloy Wheels" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='ALLOY WHEELS';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Premium Alloy Wheels</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interior Gallery -->
+    <div class="gallery-section">
+        <h3 class="section-title">Interior</h3>
+        <p class="section-subtitle">Digital luxury experience in compact form</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="image/inter.jpg" alt="Interior" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='MODERN INTERIOR';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Modern Cabin Design</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="image/per.jpg" alt="Performance" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='PERFORMANCE';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Premium Materials</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="image/seat.jpg" alt="Seats" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='COMFORT SEATS';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Ergonomic Comfort Seats</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- A-Class Features -->
+    <div class="aclass-features">
+        <h3 class="section-title">Premium Features</h3>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-label">MBUX Multimedia</div>
+                <div class="feature-value">Dual 10.25" Displays</div>
+                <p class="mt-2" style="color: rgba(249, 250, 251, 0.7); font-size: 0.9rem;">Fully digital cockpit with voice-controlled "Hey Mercedes" assistant.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">Ambient Lighting</div>
+                <div class="feature-value">64 Colors</div>
+                <p class="mt-2" style="color: rgba(249, 250, 251, 0.7); font-size: 0.9rem;">Customizable ambient lighting system with multiple themes.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">Driver Assistance</div>
+                <div class="feature-value">Active Brake Assist</div>
+                <p class="mt-2" style="color: rgba(249, 250, 251, 0.7); font-size: 0.9rem;">Comprehensive safety package with pedestrian detection.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">Navigation</div>
+                <div class="feature-value">Augmented Reality</div>
+                <p class="mt-2" style="color: rgba(249, 250, 251, 0.7); font-size: 0.9rem;">Live traffic navigation with AR instructions on the display.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">Connectivity</div>
+                <div class="feature-value">Mercedes me</div>
+                <p class="mt-2" style="color: rgba(249, 250, 251, 0.7); font-size: 0.9rem;">Remote services, vehicle monitoring, and emergency call.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">Audio System</div>
+                <div class="feature-value">Burmester® Sound</div>
+                <p class="mt-2" style="color: rgba(249, 250, 251, 0.7); font-size: 0.9rem;">Premium sound system with 12 speakers and 590 watts.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance Features -->
+    <div class="aclass-features">
+        <h3 class="section-title">Efficient Performance</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="feature-item mb-3">
+                    <div class="feature-label">Engine Technology</div>
+                    <div class="feature-value">M 282 Turbo</div>
+                    <p style="color: rgba(249, 250, 251, 0.7); font-size: 0.9rem;" class="mt-2">Advanced 1.33L turbocharged engine with CAMTRONIC valve timing.</p>
+                </div>
+                <div class="feature-item mb-3">
+                    <div class="feature-label">Transmission</div>
+                    <div class="feature-value">7G-DCT</div>
+                    <p style="color: rgba(249, 250, 251, 0.7); font-size: 0.9rem;" class="mt-2">7-speed dual-clutch transmission with paddle shifters.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-item mb-3">
+                    <div class="feature-label">Fuel Efficiency</div>
+                    <div class="feature-value">Up to 18.5 km/l</div>
+                    <p style="color: rgba(249, 250, 251, 0.7); font-size: 0.9rem;" class="mt-2">Impressive fuel economy for daily driving and long journeys.</p>
+                </div>
+                <div class="feature-item mb-3">
+                    <div class="feature-label">Driving Modes</div>
+                    <div class="feature-value">5 Selectable Modes</div>
+                    <p style="color: rgba(249, 250, 251, 0.7); font-size: 0.9rem;" class="mt-2">Individual, Comfort, Sport, Eco, and Slippery modes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <a href="booking.html" class="btn-aclass-primary">BUILD YOUR A-CLASS</a>
+        <a href="home.html" class="btn-aclass-outline">HOME</a>
+        <a href="our_models.html" class="btn-aclass-outline">EXPLORE MODELS</a>
+    </div>
+</div>
+
+<!-- Modern Footer -->
+<footer class="modern-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h3 class="footer-brand">MERCEDES-BENZ</h3>
+                <p class="mb-3" style="color: rgba(156, 163, 175, 0.8); font-size: 0.9rem;">The Mercedes-Benz A-Class combines premium quality with compact dimensions. Perfect for urban mobility without compromising on luxury.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-heading">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="home.html" class="footer-link">Home</a></li>
+                    <li class="mb-2"><a href="our_models.html" class="footer-link">Our Models</a></li>
+                    <li class="mb-2"><a href="booking.html" class="footer-link">Buy Online</a></li>
+                    <li class="mb-2"><a href="service.html" class="footer-link">Service</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-heading">Compact Range</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="footer-link">A-Class Hatchback</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">A-Class Sedan</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">B-Class</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">GLA SUV</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">GLB SUV</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-heading">Ownership Services</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <i class="fas fa-mobile-alt me-2" style="color: var(--mb-silver-primary);"></i>
+                        Mercedes me Connect
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-map-marker-alt me-2" style="color: var(--mb-silver-primary);"></i>
+                        Find a Dealer
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-file-contract me-2" style="color: var(--mb-silver-primary);"></i>
+                        Finance Options
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-shield-alt me-2" style="color: var(--mb-silver-primary);"></i>
+                        Extended Warranty
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <p class="mb-0 small" style="color: rgba(156, 163, 175, 0.6);">&copy; 2025 Mercedes-Benz. All rights reserved. *All figures are approximate and may vary.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class="footer-link" style="color: rgba(156, 163, 175, 0.6); font-size: 0.85rem;">Data Protection</a>
+                        <span class="mx-2" style="color: rgba(156, 163, 175, 0.3);">|</span>
+                        <a href="#" class="footer-link" style="color: rgba(156, 163, 175, 0.6); font-size: 0.85rem;">Legal Notice</a>
+                        <span class="mx-2" style="color: rgba(156, 163, 175, 0.3);">|</span>
+                        <a href="#" class="footer-link" style="color: rgba(156, 163, 175, 0.6); font-size: 0.85rem;">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.modern-navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Create silver particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.width = Math.random() * 3 + 1 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+        particlesContainer.appendChild(particle);
+    }
+
+    // Counter animation for stats
+    const counters = document.querySelectorAll('.tech-counter');
+    const speed = 100;
+
+    const animateCounters = () => {
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(() => animateCounters(), 20);
+            } else {
+                counter.innerText = target;
+            }
+        });
+    };
+
+    // Trigger counter animation when stats section is in view
+    const statsSection = document.querySelector('.tech-stats');
+    if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(statsSection);
+    }
+
+    // Video autoplay on scroll
+    const video = document.querySelector('video');
+    if (video) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        videoObserver.observe(video);
+    }
+
+    // Add silver glow to buttons on hover
+    document.querySelectorAll('.btn-aclass-primary').forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 0 25px rgba(156, 163, 175, 0.3)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '0 10px 25px rgba(59, 130, 246, 0.2)';
+        });
+    });
+
+    // Image error handling
+    document.querySelectorAll('img').forEach(img => {
+        img.onerror = function() {
+            this.style.display = 'none';
+            const fallback = document.createElement('div');
+            fallback.className = 'image-fallback';
+            fallback.textContent = this.alt || 'Image';
+            this.parentNode.insertBefore(fallback, this);
+        };
+    });
+
+    // Add dynamic silver accent to feature items on hover
+    document.querySelectorAll('.feature-item').forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 15px 40px rgba(156, 163, 175, 0.2)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '0 10px 30px rgba(59, 130, 246, 0.1)';
+        });
+    });
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
+
+    // MBUX Assistant simulation
+    const mbuxButton = document.createElement('button');
+    mbuxButton.className = 'btn-aclass-outline position-fixed bottom-0 end-0 m-3';
+    mbuxButton.innerHTML = '<i class="fas fa-microphone me-2"></i>Hey Mercedes';
+    mbuxButton.style.zIndex = '1000';
+    document.body.appendChild(mbuxButton);
+
+    mbuxButton.addEventListener('click', function() {
+        const responses = [
+            "Hello! How can I assist you with your A-Class?",
+            "Would you like me to show you the navigation?",
+            "The ambient lighting can be customized to your preference.",
+            "Your fuel efficiency today is 18.2 km/l.",
+            "Would you like to change the driving mode?"
+        ];
+        
+        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+        
+        // Create speech bubble
+        const speechBubble = document.createElement('div');
+        speechBubble.className = 'position-fixed bottom-20 end-3 p-3 rounded bg-dark text-light';
+        speechBubble.style.zIndex = '1000';
+        speechBubble.style.maxWidth = '300px';
+        speechBubble.style.border = '1px solid var(--mb-silver-primary)';
+        speechBubble.innerHTML = `
+            <div class="d-flex align-items-center mb-2">
+                <div class="rounded-circle bg-silver-primary me-2" style="width: 30px; height: 30px;"></div>
+                <strong>MBUX Assistant</strong>
+            </div>
+            <div>${randomResponse}</div>
+        `;
+        
+        document.body.appendChild(speechBubble);
+        
+        setTimeout(() => {
+            speechBubble.remove();
+        }, 3000);
+    });
+
+    // Dynamic fuel efficiency display
+    function updateFuelEfficiency() {
+        const efficiency = (Math.random() * 2 + 17).toFixed(1);
+        document.querySelectorAll('.feature-value').forEach(el => {
+            if (el.textContent.includes('km/l')) {
+                el.textContent = `Up to ${efficiency} km/l`;
+            }
+        });
+    }
+
+    // Update efficiency every 30 seconds
+    setInterval(updateFuelEfficiency, 30000);
+</script>
+</body>
+</html>

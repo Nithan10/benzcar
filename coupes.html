@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mercedes-AMG Coupe | Performance Redefined</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --amg-red: #C00A27;          /* AMG Signature Red */
+            --amg-dark: #0A0A0A;         /* Carbon Black */
+            --amg-silver: #C0C0C0;       /* Silver Accent */
+            --amg-light: #F5F5F5;        /* Ice White */
+            --amg-graphite: #1A1A1A;     /* Graphite Grey */
+            --amg-orange: #FF5C00;       /* Performance Orange */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--amg-dark);
+            color: var(--amg-light);
+            overflow-x: hidden;
+        }
+
+        /* Performance Navbar */
+        .performance-navbar {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+            box-shadow: 0 2px 30px rgba(192, 0, 39, 0.3);
+            padding: 0;
+            transition: all 0.5s ease;
+            border-bottom: 1px solid rgba(192, 0, 39, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .performance-navbar.scrolled {
+            background: rgba(10, 10, 10, 0.98);
+            box-shadow: 0 4px 40px rgba(192, 0, 39, 0.4);
+        }
+
+        .navbar-brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+        }
+
+        .brand-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--amg-red);
+            transition: all 0.5s ease;
+            filter: drop-shadow(0 0 10px rgba(192, 0, 39, 0.3));
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.1) rotate(360deg);
+            box-shadow: 0 0 20px rgba(192, 0, 39, 0.5);
+        }
+
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--amg-light) 0%, var(--amg-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .nav-link {
+            color: var(--amg-light) !important;
+            font-weight: 400;
+            padding: 1rem 1.5rem !important;
+            position: relative;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--amg-red);
+            transition: width 0.4s ease;
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 80%;
+        }
+
+        .nav-link:hover {
+            color: var(--amg-red) !important;
+            transform: translateY(-2px);
+            text-shadow: 0 0 20px rgba(192, 0, 39, 0.3);
+        }
+
+        /* Hero Section */
+        .amg-hero {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.9), rgba(192, 0, 39, 0.2)), url('https://www.mercedes-benz.co.in/content/dam/retail/india/AMG_Launch_Still_TIFF_RGB.jpg/1739988757697.jpg?im=Crop,rect=(0,0,3840,1707);Resize=(2730,1214)');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .amg-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, transparent 0%, rgba(192, 0, 39, 0.1) 70%, transparent 100%);
+            animation: redPulse 6s infinite alternate;
+        }
+
+        @keyframes redPulse {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.3; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .amg-title {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--amg-light);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .amg-title span {
+            color: var(--amg-red);
+            font-weight: 800;
+        }
+
+        .amg-subtitle {
+            font-size: 1.8rem;
+            color: var(--amg-silver);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1.2s ease;
+            letter-spacing: 2px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Performance Stats */
+        .performance-stats {
+            background: linear-gradient(135deg, rgba(192, 0, 39, 0.1) 0%, rgba(10, 10, 10, 0.8) 100%);
+            padding: 4rem 0;
+            border-radius: 15px;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(192, 0, 39, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .performance-stats::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--amg-red), var(--amg-orange), var(--amg-red));
+            border-radius: 15px;
+            z-index: -1;
+            animation: redBorder 3s linear infinite;
+        }
+
+        @keyframes redBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .stat-value {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--amg-red);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(192, 0, 39, 0.4);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--amg-silver);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        /* Main Car Image */
+        .main-car-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+            transition: all 0.6s ease;
+            margin: 4rem 0;
+            position: relative;
+            border: 2px solid rgba(192, 0, 39, 0.3);
+        }
+
+        .main-car-image:hover {
+            transform: scale(1.01);
+            box-shadow: 0 40px 100px rgba(192, 0, 39, 0.3);
+            border-color: var(--amg-red);
+        }
+
+        .main-car-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .main-car-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .amg-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(26, 26, 26, 0.8);
+            color: var(--amg-red);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 10;
+            border: 1px solid rgba(192, 0, 39, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Video Section */
+        .amg-video-section {
+            background: linear-gradient(135deg, var(--amg-dark) 0%, #151515 100%);
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .amg-video-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(192, 0, 39, 0.05), transparent);
+            animation: shimmer 4s infinite;
+        }
+
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-wrapper {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+            transition: all 0.6s ease;
+            border: 2px solid rgba(192, 0, 39, 0.3);
+        }
+
+        .video-wrapper:hover {
+            transform: scale(1.01);
+            box-shadow: 0 40px 100px rgba(192, 0, 39, 0.2);
+            border-color: var(--amg-red);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--amg-light);
+            text-transform: uppercase;
+        }
+
+        .video-subtitle {
+            font-size: 1.2rem;
+            color: var(--amg-red);
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Gallery Sections */
+        .gallery-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #0F0F0F 0%, var(--amg-graphite) 100%);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--amg-light);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--amg-red);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--amg-silver);
+            margin-bottom: 4rem;
+            font-weight: 400;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: all 0.5s ease;
+            height: 320px;
+            background: var(--amg-graphite);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(192, 0, 39, 0.2);
+            border-color: rgba(192, 0, 39, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9), transparent);
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-title {
+            color: var(--amg-red);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Performance Features */
+        .performance-features {
+            background: linear-gradient(135deg, rgba(192, 0, 39, 0.1) 0%, rgba(10, 10, 10, 0.8) 100%);
+            padding: 5rem;
+            border-radius: 15px;
+            margin: 4rem 0;
+            border: 1px solid rgba(192, 0, 39, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--amg-red);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-item:hover {
+            background: rgba(192, 0, 39, 0.1);
+            transform: translateY(-5px);
+            border-color: var(--amg-red);
+            box-shadow: 0 15px 40px rgba(192, 0, 39, 0.2);
+        }
+
+        .feature-label {
+            color: var(--amg-silver);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .feature-value {
+            color: var(--amg-light);
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        /* Button Styling */
+        .btn-amg-primary {
+            background: linear-gradient(135deg, rgba(192, 0, 39, 0.3) 0%, rgba(255, 92, 0, 0.2) 100%);
+            color: var(--amg-red);
+            border: 1px solid var(--amg-red);
+            padding: 1.2rem 3rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-amg-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(192, 0, 39, 0.2), transparent);
+            transition: all 0.8s ease;
+        }
+
+        .btn-amg-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-amg-primary:hover {
+            background: linear-gradient(135deg, rgba(192, 0, 39, 0.4) 0%, rgba(255, 92, 0, 0.3) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(192, 0, 39, 0.3);
+            color: var(--amg-light);
+        }
+
+        .btn-amg-outline {
+            background: transparent;
+            color: var(--amg-red);
+            border: 1px solid var(--amg-red);
+            padding: 1.2rem 3rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-amg-outline:hover {
+            background: rgba(192, 0, 39, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(192, 0, 39, 0.2);
+            color: var(--amg-light);
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 5rem 0;
+            flex-wrap: wrap;
+        }
+
+        /* Enhanced Footer */
+        .performance-footer {
+            background: linear-gradient(135deg, #050505 0%, var(--amg-graphite) 100%);
+            color: var(--amg-silver);
+            padding: 5rem 0 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(192, 0, 39, 0.2);
+        }
+
+        .performance-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--amg-red), transparent);
+        }
+
+        .footer-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--amg-light) 0%, var(--amg-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-heading {
+            color: var(--amg-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--amg-red);
+        }
+
+        .footer-link {
+            color: var(--amg-silver);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 0.3rem 0;
+            position: relative;
+            font-weight: 400;
+        }
+
+        .footer-link::before {
+            content: '>';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: var(--amg-red);
+            font-weight: bold;
+        }
+
+        .footer-link:hover {
+            color: var(--amg-red);
+            padding-left: 20px;
+        }
+
+        .footer-link:hover::before {
+            opacity: 1;
+            left: 0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--amg-silver);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(192, 0, 39, 0.2);
+        }
+
+        .social-icon:hover {
+            background: var(--amg-red);
+            color: #000;
+            transform: translateY(-5px) rotate(360deg);
+            border-color: var(--amg-red);
+            box-shadow: 0 10px 25px rgba(192, 0, 39, 0.3);
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .amg-title {
+                font-size: 3.5rem;
+            }
+            
+            .amg-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .performance-features {
+                padding: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .amg-title {
+                font-size: 2.5rem;
+            }
+            
+            .amg-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .stat-value {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-amg-primary, .btn-amg-outline {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .amg-title {
+                font-size: 2rem;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+            
+            .video-title {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-item {
+                height: 250px;
+            }
+        }
+
+        /* Red Particles Animation */
+        .red-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--amg-red);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        /* Loading Fallback */
+        .image-fallback {
+            background: linear-gradient(135deg, var(--amg-graphite) 0%, #2A2A2A 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(192, 0, 39, 0.3);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* Performance Counter */
+        .counter {
+            font-family: 'Courier New', monospace;
+            font-size: 4rem;
+            color: var(--amg-red);
+            text-shadow: 0 0 10px rgba(192, 0, 39, 0.5);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600&family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Red Particles Animation -->
+<div class="red-particles" id="particles"></div>
+
+<!-- Performance Navbar -->
+<nav class="navbar navbar-expand-lg performance-navbar sticky-top">
+    <div class="container">
+        <div class="navbar-brand-container">
+            <img src="image/logo.jpg" class="brand-logo" alt="Mercedes-AMG Logo" onerror="this.style.display='none'">
+            <a class="navbar-brand" href="Mercedes-Benz.htm">MERCEDES-AMG</a>
+        </div>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="our_models.html">Our Models</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking.html">Buy Online</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="service.html">Service</a>
+                </li>
+            </ul>
+
+            <form class="d-flex" role="search">
+                <button class="btn-amg-primary" type="button" onclick="window.location.href='booking.html'">Build Your AMG</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="amg-hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="amg-title">Mercedes-AMG <span>Coupe</span></h1>
+            <p class="amg-subtitle">Performance Redefined. Track Perfected.</p>
+            
+            <div class="performance-stats">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-value counter" data-target="620">0</div>
+                            <div class="stat-label">Maximum Power (KW)</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-value counter" data-target="1470">0</div>
+                            <div class="stat-label">Peak Torque (Nm)</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-value counter" data-target="316">0</div>
+                            <div class="stat-label">Top Speed (km/h)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+    <!-- Main Car Image -->
+    <div class="main-car-image">
+        <div class="amg-badge">ONE MAN - ONE ENGINE</div>
+        <img src="image/co.jpg" alt="Mercedes-AMG Coupe" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='AMG COUPE';">
+    </div>
+
+    <!-- Design Introduction -->
+    <div class="text-center my-5">
+        <h2 class="video-title">The Design of the Coupes</h2>
+        <p class="video-subtitle">Where racing heritage meets luxury design</p>
+    </div>
+
+    <!-- Video Section -->
+    <div class="amg-video-section">
+        <div class="video-container">
+            <div class="video-wrapper">
+                <video width="1000" controls loop muted playsinline poster="https://images.unsplash.com/photo-1593941707882-a5bba5338fe2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80">
+                    <source src="video/coupe.mp4" type="video/mp4">
+                    <source src="video/coupe.ogg" type="video/ogg">
+                    Your browser does not support HTML video.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exterior Gallery -->
+    <div class="gallery-section">
+        <h3 class="section-title">Exterior</h3>
+        <p class="section-subtitle">The extravagant design - Form follows function</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="image/gt.jpg" alt="AMG GT" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='AMG GT';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">AMG GT - Track Aggression</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="image/v8.jpg" alt="V8 Engine" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='V8 BITURBO';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Handcrafted V8 Biturbo</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="image/high.jpg" alt="High Performance" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='PERFORMANCE';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Carbon Fiber Aerodynamics</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interior Gallery -->
+    <div class="gallery-section">
+        <h3 class="section-title">Interior</h3>
+        <p class="section-subtitle">Electrified driving experience - The workplace for high-performers</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="image/display.jpg" alt="Digital Display" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='DIGITAL COCKPIT';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">AMG Track Pace Display</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="image/center.jpg" alt="Center Console" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='RACE CONSOLE';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Race-inspired Console</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="image/amg.jpg" alt="AMG Interior" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='AMG INTERIOR';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">AMG Performance Seats</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance Features -->
+    <div class="performance-features">
+        <h3 class="section-title">AMG Exclusive Features</h3>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-label">Handcrafted Engine</div>
+                <div class="feature-value">One Man - One Engine</div>
+                <p class="mt-3" style="color: rgba(245, 245, 245, 0.7);">Every AMG engine is assembled by a single master technician who signs their work.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">AMG Performance 4MATIC+</div>
+                <div class="feature-value">Fully Variable AWD</div>
+                <p class="mt-3" style="color: rgba(245, 245, 245, 0.7);">Intelligent all-wheel drive with fully variable torque distribution for optimal traction.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">AMG Ride Control</div>
+                <div class="feature-value">Adaptive Suspension</div>
+                <p class="mt-3" style="color: rgba(245, 245, 245, 0.7);">Three-chamber air suspension with adaptive damping adjustment in milliseconds.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">AMG Exhaust System</div>
+                <div class="feature-value">Active Sound Design</div>
+                <p class="mt-3" style="color: rgba(245, 245, 245, 0.7);">Adjustable exhaust system with sport and race modes for the perfect AMG sound.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">Carbon Ceramic Brakes</div>
+                <div class="feature-value">AMG High-Performance</div>
+                <p class="mt-3" style="color: rgba(245, 245, 245, 0.7);">Lightweight carbon-ceramic braking system for maximum stopping power.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">AMG Track Pace</div>
+                <div class="feature-value">Race Telemetry</div>
+                <p class="mt-3" style="color: rgba(245, 245, 245, 0.7);">Integrated data logger that records over 80 vehicle-specific parameters.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance Specs -->
+    <div class="performance-features">
+        <h3 class="section-title">Performance Specifications</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="feature-item mb-4">
+                    <div class="feature-label">Acceleration</div>
+                    <div class="feature-value">0-100 km/h: 3.2s</div>
+                    <p style="color: rgba(245, 245, 245, 0.7);" class="mt-2">Devastating acceleration that pins you to the AMG Performance seats.</p>
+                </div>
+                <div class="feature-item mb-4">
+                    <div class="feature-label">Transmission</div>
+                    <div class="feature-value">AMG SPEEDSHIFT DCT</div>
+                    <p style="color: rgba(245, 245, 245, 0.7);" class="mt-2">9-speed dual-clutch transmission with lightning-fast gear changes.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-item mb-4">
+                    <div class="feature-label">Driving Modes</div>
+                    <div class="feature-value">6 AMG DYNAMICS</div>
+                    <p style="color: rgba(245, 245, 245, 0.7);" class="mt-2">From Comfort to Race Plus - customizable driving experience.</p>
+                </div>
+                <div class="feature-item mb-4">
+                    <div class="feature-label">Power Delivery</div>
+                    <div class="feature-value">Electric Turbo</div>
+                    <p style="color: rgba(245, 245, 245, 0.7);" class="mt-2">Electrically assisted turbocharger for instant response and no lag.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <a href="booking.html" class="btn-amg-primary">BUILD YOUR COUPE</a>
+        <a href="home.html" class="btn-amg-outline">HOME</a>
+        <a href="our_models.html" class="btn-amg-outline">OUR MODELS</a>
+    </div>
+</div>
+
+<!-- Enhanced Performance Footer -->
+<footer class="performance-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h3 class="footer-brand">MERCEDES-AMG</h3>
+                <p class="mb-3" style="color: rgba(192, 192, 192, 0.8);">Since 1967, AMG has stood for automotive performance, exclusivity, and innovation. Driving Performance is our passion.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-heading">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="home.html" class="footer-link">Home</a></li>
+                    <li class="mb-2"><a href="our_models.html" class="footer-link">Our Models</a></li>
+                    <li class="mb-2"><a href="booking.html" class="footer-link">Buy Online</a></li>
+                    <li class="mb-2"><a href="service.html" class="footer-link">Service</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-heading">AMG Models</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="footer-link">AMG GT</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">AMG C 63</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">AMG E 63</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">AMG S 63</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">AMG One</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-heading">Performance Services</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <i class="fas fa-flag-checkered me-2" style="color: var(--amg-red);"></i>
+                        AMG Driving Academy
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-tools me-2" style="color: var(--amg-red);"></i>
+                        Performance Tuning
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-medal me-2" style="color: var(--amg-red);"></i>
+                        Track Certification
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-calendar-alt me-2" style="color: var(--amg-red);"></i>
+                        Exclusive Track Days
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <p class="mb-0 small" style="color: rgba(192, 192, 192, 0.6);">&copy; 2025 Mercedes-AMG. All rights reserved. "One Man - One Engine" is a registered trademark.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class="footer-link" style="color: rgba(192, 192, 192, 0.6);">Track Safety</a>
+                        <span class="mx-2" style="color: rgba(192, 192, 192, 0.3);">|</span>
+                        <a href="#" class="footer-link" style="color: rgba(192, 192, 192, 0.6);">Performance Data</a>
+                        <span class="mx-2" style="color: rgba(192, 192, 192, 0.3);">|</span>
+                        <a href="#" class="footer-link" style="color: rgba(192, 192, 192, 0.6);">AMG Private Lounge</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.performance-navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Create red particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 25; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.width = Math.random() * 4 + 2 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+        particlesContainer.appendChild(particle);
+    }
+
+    // Counter animation for stats
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200;
+
+    const animateCounters = () => {
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(() => animateCounters(), 10);
+            } else {
+                counter.innerText = target;
+            }
+        });
+    };
+
+    // Trigger counter animation when stats section is in view
+    const statsSection = document.querySelector('.performance-stats');
+    if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(statsSection);
+    }
+
+    // Video autoplay on scroll
+    const video = document.querySelector('video');
+    if (video) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        videoObserver.observe(video);
+    }
+
+    // Add red glow to buttons on hover
+    document.querySelectorAll('.btn-amg-primary').forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 0 30px rgba(192, 0, 39, 0.4)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '0 15px 35px rgba(192, 0, 39, 0.3)';
+        });
+    });
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.amg-hero');
+        if (hero) {
+            hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+        }
+    });
+
+    // Image error handling
+    document.querySelectorAll('img').forEach(img => {
+        img.onerror = function() {
+            this.style.display = 'none';
+            const fallback = document.createElement('div');
+            fallback.className = 'image-fallback';
+            fallback.textContent = this.alt || 'Image';
+            this.parentNode.insertBefore(fallback, this);
+        };
+    });
+
+    // Add dynamic red accent to feature items on hover
+    document.querySelectorAll('.feature-item').forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 20px 50px rgba(192, 0, 39, 0.25)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '0 15px 40px rgba(192, 0, 39, 0.1)';
+        });
+    });
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
+
+    // Performance sound effect on button click
+    document.querySelectorAll('.btn-amg-primary').forEach(button => {
+        button.addEventListener('click', function() {
+            // In a real implementation, you would add engine sound here
+            console.log('VROOM! Engine starting...');
+        });
+    });
+
+    // Performance timer for track mode
+    let trackMode = false;
+    const trackModeButton = document.createElement('button');
+    trackModeButton.className = 'btn-amg-outline position-fixed bottom-0 end-0 m-3';
+    trackModeButton.innerHTML = '<i class="fas fa-flag-checkered me-2"></i>TRACK MODE';
+    trackModeButton.style.zIndex = '1000';
+    document.body.appendChild(trackModeButton);
+
+    trackModeButton.addEventListener('click', function() {
+        trackMode = !trackMode;
+        if (trackMode) {
+            document.body.style.filter = 'sepia(0.5)';
+            this.innerHTML = '<i class="fas fa-road me-2"></i>ROAD MODE';
+            this.classList.add('btn-amg-primary');
+            this.classList.remove('btn-amg-outline');
+        } else {
+            document.body.style.filter = 'none';
+            this.innerHTML = '<i class="fas fa-flag-checkered me-2"></i>TRACK MODE';
+            this.classList.add('btn-amg-outline');
+            this.classList.remove('btn-amg-primary');
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mercedes-AMG SL Roadster | Luxury Convertible</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --amg-silver: #C0C0C0;       /* AMG Silver */
+            --amg-blue: #0082B3;         /* Roadster Blue */
+            --amg-dark: #0A0A0A;         /* Carbon Black */
+            --amg-light: #F5F5F5;        /* Ice White */
+            --amg-graphite: #1A1A1A;     /* Graphite Grey */
+            --amg-red: #C00A27;          /* Performance Red */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--amg-dark);
+            color: var(--amg-light);
+            overflow-x: hidden;
+        }
+
+        /* Luxury Navbar */
+        .luxury-navbar {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(0, 130, 179, 0.15) 100%);
+            box-shadow: 0 2px 30px rgba(0, 130, 179, 0.3);
+            padding: 0;
+            transition: all 0.5s ease;
+            border-bottom: 1px solid rgba(0, 130, 179, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .luxury-navbar.scrolled {
+            background: rgba(10, 10, 10, 0.98);
+            box-shadow: 0 4px 40px rgba(0, 130, 179, 0.4);
+        }
+
+        .navbar-brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+        }
+
+        .brand-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--amg-silver);
+            transition: all 0.5s ease;
+            filter: drop-shadow(0 0 10px rgba(192, 192, 192, 0.3));
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.1) rotate(360deg);
+            box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
+        }
+
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--amg-light) 0%, var(--amg-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .nav-link {
+            color: var(--amg-light) !important;
+            font-weight: 400;
+            padding: 1rem 1.5rem !important;
+            position: relative;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--amg-blue);
+            transition: width 0.4s ease;
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 80%;
+        }
+
+        .nav-link:hover {
+            color: var(--amg-blue) !important;
+            transform: translateY(-2px);
+            text-shadow: 0 0 20px rgba(0, 130, 179, 0.3);
+        }
+
+        /* Hero Section */
+        .sl-hero {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.85), rgba(0, 130, 179, 0.15)), url('https://media.oneweb.mercedes-benz.com/images/dynamic/europe/IN/232480/804/iris.png?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZgk4ZbMw3SGtxX2tsd1ZpcUfwMuXGEuymJ0l34lOB2Ng1bApjkbI5uVmMQC3qS7kzNRJ9m7jxamhKV1Ht%25vq9vlyLRDG6YaxWbSrH1djln8wfV3oiZLboM4FaCJTg9Hhk6PD8rNSeWAmutsd5hQcUfCUuXGEziEJ0l7ohOB2KM1bApvIyI5uOo2QC3ih1kzNGTNm7j07ZhKVBbM%25vqAI%25yLR5Y6YaxCrJrH1zgtn8w7P3oiZx6YM4Fs4rTg9UhO6PDGmhSc6o3jux%25%25vq8cXyr%25WNaYnyiXWrH1Cmdn8w5VUoiZH5EM4F8SFTg9itk6PD4%25DSeWgwutsdPZdcUfxC%25XGE0ymJ0lB0VOB2Ag1bAp5dRI5uCcxQC3zkpkze94pOy1qFm9KS1YN0NTmj32v2bwbU15zsRG1gdPVyJ4CM&BKGND=9&IMGT=P27&cp=U7lLKRUtPa6KAFr8s_ubHw&uni=m&POV=BE040,DZO,PZM');
+            background-size: cover;
+            background-position: center 30%;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .sl-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, transparent 0%, rgba(0, 130, 179, 0.1) 70%, transparent 100%);
+            animation: bluePulse 6s infinite alternate;
+        }
+
+        @keyframes bluePulse {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.3; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .sl-title {
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--amg-light);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .sl-title span {
+            color: var(--amg-blue);
+            font-weight: 400;
+        }
+
+        .sl-subtitle {
+            font-size: 1.5rem;
+            color: var(--amg-silver);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1.2s ease;
+            letter-spacing: 2px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Performance Stats */
+        .performance-stats {
+            background: linear-gradient(135deg, rgba(0, 130, 179, 0.1) 0%, rgba(10, 10, 10, 0.8) 100%);
+            padding: 4rem 0;
+            border-radius: 15px;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 130, 179, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .performance-stats::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(17, 24, 39, 0.8) 100%);
+            border-radius: 15px;
+            z-index: -1;
+            animation: blueBorder 3s linear infinite;
+        }
+
+        @keyframes blueBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .stat-value {
+            font-size: 3.2rem;
+            font-weight: 300;
+            color: var(--amg-blue);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(0, 130, 179, 0.4);
+            font-family: 'Courier New', monospace;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--amg-silver);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        /* Main Car Image */
+        .main-car-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            transition: all 0.6s ease;
+            margin: 4rem 0;
+            position: relative;
+            border: 2px solid rgba(0, 130, 179, 0.3);
+        }
+
+        .main-car-image:hover {
+            transform: scale(1.01);
+            box-shadow: 0 40px 100px rgba(0, 130, 179, 0.3);
+            border-color: var(--amg-blue);
+        }
+
+        .main-car-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .main-car-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .sl-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(26, 26, 26, 0.7);
+            color: var(--amg-blue);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 10;
+            border: 1px solid rgba(0, 130, 179, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Video Section */
+        .sl-video-section {
+            background: linear-gradient(135deg, var(--amg-dark) 0%, #151525 100%);
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sl-video-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(0, 130, 179, 0.05), transparent);
+            animation: shimmer 4s infinite;
+        }
+
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-wrapper {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            transition: all 0.6s ease;
+            border: 2px solid rgba(0, 130, 179, 0.3);
+        }
+
+        .video-wrapper:hover {
+            transform: scale(1.01);
+            box-shadow: 0 40px 100px rgba(0, 130, 179, 0.2);
+            border-color: var(--amg-blue);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--amg-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .video-subtitle {
+            font-size: 1.2rem;
+            color: var(--amg-blue);
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Gallery Sections */
+        .gallery-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #0F0F1A 0%, var(--amg-graphite) 100%);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--amg-light);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background: var(--amg-blue);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--amg-silver);
+            margin-bottom: 4rem;
+            font-weight: 400;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: all 0.5s ease;
+            height: 300px;
+            background: var(--amg-graphite);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 130, 179, 0.2);
+            border-color: rgba(0, 130, 179, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9), transparent);
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-title {
+            color: var(--amg-blue);
+            font-size: 1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Features Section */
+        .sl-features {
+            background: linear-gradient(135deg, rgba(0, 130, 179, 0.1) 0%, rgba(10, 10, 10, 0.8) 100%);
+            padding: 4rem;
+            border-radius: 15px;
+            margin: 4rem 0;
+            border: 1px solid rgba(0, 130, 179, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--amg-blue);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-item:hover {
+            background: rgba(0, 130, 179, 0.1);
+            transform: translateY(-5px);
+            border-color: var(--amg-blue);
+            box-shadow: 0 15px 40px rgba(0, 130, 179, 0.2);
+        }
+
+        .feature-label {
+            color: var(--amg-silver);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+        }
+
+        .feature-value {
+            color: var(--amg-light);
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* Convertible Features */
+        .convertible-features {
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.1) 0%, rgba(10, 10, 10, 0.8) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid rgba(192, 192, 192, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .convertible-meter {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .convertible-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--amg-blue), var(--amg-silver));
+            border-radius: 5px;
+            width: 92%;
+            animation: convertibleFill 2s ease-out;
+        }
+
+        @keyframes convertibleFill {
+            from { width: 0; }
+            to { width: 92%; }
+        }
+
+        /* Button Styling */
+        .btn-sl-primary {
+            background: linear-gradient(135deg, rgba(0, 130, 179, 0.3) 0%, rgba(192, 192, 192, 0.2) 100%);
+            color: var(--amg-blue);
+            border: 1px solid var(--amg-blue);
+            padding: 1.2rem 3rem;
+            border-radius: 30px;
+            font-weight: 400;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-sl-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 130, 179, 0.2), transparent);
+            transition: all 0.8s ease;
+        }
+
+        .btn-sl-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-sl-primary:hover {
+            background: linear-gradient(135deg, rgba(0, 130, 179, 0.4) 0%, rgba(192, 192, 192, 0.3) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 130, 179, 0.3);
+            color: var(--amg-light);
+        }
+
+        .btn-sl-outline {
+            background: transparent;
+            color: var(--amg-blue);
+            border: 1px solid var(--amg-blue);
+            padding: 1.2rem 3rem;
+            border-radius: 30px;
+            font-weight: 400;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-sl-outline:hover {
+            background: rgba(0, 130, 179, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 130, 179, 0.2);
+            color: var(--amg-light);
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 5rem 0;
+            flex-wrap: wrap;
+        }
+
+        /* Luxury Footer */
+        .luxury-footer {
+            background: linear-gradient(135deg, #05050F 0%, var(--amg-graphite) 100%);
+            color: var(--amg-silver);
+            padding: 5rem 0 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(0, 130, 179, 0.2);
+        }
+
+        .luxury-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--amg-blue), transparent);
+        }
+
+        .footer-brand {
+            font-size: 2rem;
+            font-weight: 300;
+            background: linear-gradient(135deg, var(--amg-light) 0%, var(--amg-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-heading {
+            color: var(--amg-light);
+            font-weight: 400;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--amg-blue);
+        }
+
+        .footer-link {
+            color: var(--amg-silver);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 0.3rem 0;
+            position: relative;
+            font-weight: 400;
+        }
+
+        .footer-link::before {
+            content: '⇢';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: var(--amg-blue);
+        }
+
+        .footer-link:hover {
+            color: var(--amg-blue);
+            padding-left: 20px;
+        }
+
+        .footer-link:hover::before {
+            opacity: 1;
+            left: 0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--amg-silver);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 130, 179, 0.2);
+        }
+
+        .social-icon:hover {
+            background: var(--amg-blue);
+            color: var(--amg-dark);
+            transform: translateY(-5px) rotate(360deg);
+            border-color: var(--amg-blue);
+            box-shadow: 0 10px 25px rgba(0, 130, 179, 0.3);
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .sl-title {
+                font-size: 3rem;
+            }
+            
+            .sl-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .sl-features {
+                padding: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sl-title {
+                font-size: 2.2rem;
+            }
+            
+            .sl-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .stat-value {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-sl-primary, .btn-sl-outline {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .sl-title {
+                font-size: 1.8rem;
+            }
+            
+            .stat-value {
+                font-size: 1.8rem;
+            }
+            
+            .video-title {
+                font-size: 1.5rem;
+            }
+            
+            .gallery-item {
+                height: 220px;
+            }
+        }
+
+        /* Blue Particles Animation */
+        .blue-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--amg-blue);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        /* Loading Fallback */
+        .image-fallback {
+            background: linear-gradient(135deg, var(--amg-graphite) 0%, #2A2A3A 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0, 130, 179, 0.3);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        /* Performance Counter */
+        .counter {
+            font-family: 'Courier New', monospace;
+            font-size: 3.5rem;
+            color: var(--amg-blue);
+            text-shadow: 0 0 10px rgba(0, 130, 179, 0.4);
+        }
+
+        /* Convertible Badge */
+        .convertible-badge {
+            display: inline-block;
+            background: rgba(0, 130, 179, 0.2);
+            color: var(--amg-silver);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+            border: 1px solid rgba(0, 130, 179, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Roof Animation */
+        .roof-container {
+            width: 200px;
+            height: 100px;
+            border: 2px solid var(--amg-blue);
+            border-radius: 10px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(26, 26, 38, 0.8) 100%);
+        }
+
+        .roof-animation {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 49%, var(--amg-blue) 50%, transparent 51%);
+            animation: roofRetract 3s infinite alternate;
+            position: absolute;
+            top: 0;
+        }
+
+        @keyframes roofRetract {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100%); opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Blue Particles Animation -->
+<div class="blue-particles" id="particles"></div>
+
+<!-- Luxury Navbar -->
+<nav class="navbar navbar-expand-lg luxury-navbar sticky-top">
+    <div class="container">
+        <div class="navbar-brand-container">
+            <img src="image/logo.jpg" class="brand-logo" alt="Mercedes-AMG Logo" onerror="this.style.display='none'">
+            <a class="navbar-brand" href="Mercedes-Benz.htm">MERCEDES-AMG</a>
+        </div>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="our_models.html">Our Models</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking.html">Buy Online</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="service.html">Service</a>
+                </li>
+            </ul>
+
+            <form class="d-flex" role="search">
+                <button class="btn-sl-primary" type="button" onclick="window.location.href='booking.html'">Configure SL</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="sl-hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="sl-title">SL <span>ROADSTER</span></h1>
+            <p class="sl-subtitle">The legend reimagined. Luxury with open skies.</p>
+            
+            <div class="performance-stats">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-value counter" data-target="585">0</div>
+                            <div class="stat-label">Horsepower (hp)</div>
+                            <div class="roof-container mt-3">
+                                <div class="roof-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-value counter" data-target="3.6">0</div>
+                            <div class="stat-label">0-100 km/h (seconds)</div>
+                            <div class="mt-3">
+                                <i class="fas fa-wind" style="color: var(--amg-blue); font-size: 2rem;"></i>
+                                <p class="stat-label mt-2">Top-down Performance</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-value counter" data-target="315">0</div>
+                            <div class="stat-label">Top Speed (km/h)</div>
+                            <div class="stat-value counter mt-2" data-target="15">0</div>
+                            <div class="stat-label">Seconds Roof Operation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+    <!-- Main Car Image -->
+    <div class="main-car-image">
+        <div class="sl-badge">SINCE 1954</div>
+        <img src="https://www.mercedes-benz.co.in/content/dam/india/passengercars/models/cabriolet-roadster/Tile-1.jpg?im=Resize,width=1184" alt="Mercedes-AMG SL Roadster" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='AMG SL ROADSTER';">
+    </div>
+
+    <!-- Design Introduction -->
+    <div class="text-center my-5">
+        <h2 class="video-title">The Design of the SL Roadster</h2>
+        <p class="video-subtitle">Seven decades of legendary roadster heritage</p>
+    </div>
+
+    <!-- Video Section -->
+    <div class="sl-video-section">
+        <div class="video-container">
+            <div class="video-wrapper">
+                <video width="1000" controls loop muted playsinline poster="video\Ben.mp4">
+                    <source src="video\Ben.mp4" type="video/mp4">
+                    Your browser does not support HTML video.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exterior Gallery -->
+    <div class="gallery-section">
+        <h3 class="section-title">Exterior</h3>
+        <p class="section-subtitle">Iconic roadster proportions with modern AMG design</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="https://www.mercedes-benz.co.in/content/dam/india/passengercars/models/cabriolet-roadster/Tile-5.jpg?im=Resize,width=1014" alt="SL Roadster Front" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='FRONT DESIGN';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Panamericana Grille</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="https://www.mercedes-benz.co.in/content/dam/hq/passengercars/cars/sl/sl-roadster-r232-pi/overview/spa/08-2025/images/mercedes-amg-sl-roadster-r232-spa-highlights-55-performance-2400x2400-08-2025.jpg?im=Resize,width=1014" alt="SL Roadster Rear" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='REAR DESIGN';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Active Rear Spoiler</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="https://media.oneweb.mercedes-benz.com/images/dynamic/europe/IN/232480/804/iris.png?q=COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZ6ZGZbMw3SGtxX2tsd1ZpcUfwMuXGEuymJ0l34lOB2Ng1bApjkbI5uVmMQC3qS7kzNRJ9m7jxamhKV1Ht%25vq9vlyLRDG6YaxWbSrH1djln8wfV3oiZLboM4FaCJTg9Hhk6PD8rNSeWAmutsd5hQcUfCUuXGEziEJ0l7ohOB2KM1bApvIyI5uOo2QC3ih1kzNGTNm7j07ZhKVBbM%25vqAI%25yLR5Y6YaxCrJrH1zgtn8w7P3oiZx6YM4Fs4rTg9UhO6PDGmhSc6o3jux%25%25vq8cXyr%25WNaYnyiXWrH1Cmdn8w5VUoiZH5EM4F8SFTg9itk6PD4%25DSeWgwutsdPZdcUfxC%25XGE0ymJ0lB0VOB2Ag1bAp5dRI5uCcxQC3zkpkze94pOy1qFm9KS1YN0NTmj32v2bwbU15zsRG1gdPVyJ4CM&BKGND=9&IMGT=P27&cp=U7lLKRUtPa6KAFr8s_ubHw&uni=m&POV=BE040,DZO,PZM" alt="Fabric Roof" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='FABRIC ROOF';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Z-fold Soft Top</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interior Gallery -->
+    <div class="gallery-section">
+        <h3 class="section-title">Interior</h3>
+        <p class="section-subtitle">Luxury meets performance in a 2+2 seater</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="https://www.mercedes-benz.co.in/content/dam/india/passengercars/models/cabriolet-roadster/Tile-2.jpg?im=Resize,width=1014" alt="SL Interior" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='INTERIOR';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">2+2 Seating Layout</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="https://www.mercedes-benz.co.in/content/dam/india/passengercars/models/cabriolet-roadster/Tile-4.jpg?im=Resize,width=1014" alt="Cockpit" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='COCKPIT';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">AMG Performance Steering</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="https://media.oneweb.mercedes-benz.com/images/static/v1/17321/6/88/bde900eddccfded41f065463799c9bbc949c5.jpg?imwidth=854" alt="Digital Display" class="img-fluid" onerror="this.parentElement.classList.add('image-fallback'); this.parentElement.innerHTML='DISPLAY';">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">MBUX Hyperscreen</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Convertible Features -->
+    <div class="convertible-features">
+        <h4 class="text-center mb-3">Convertible Experience</h4>
+        <div class="d-flex justify-content-between mb-2">
+            <span style="color: var(--amg-blue);">Open-Air Luxury</span>
+            <span style="color: var(--amg-silver);">92%</span>
+        </div>
+        <div class="convertible-meter">
+            <div class="convertible-fill"></div>
+        </div>
+        <div class="text-center mt-3">
+            <span class="convertible-badge">Up to 60 km/h roof operation</span>
+            <span class="convertible-badge">Acoustic soft top</span>
+            <span class="convertible-badge">AIRSCARF neck-level heating</span>
+            <span class="convertible-badge">AIRCAP wind deflector</span>
+        </div>
+        <p class="text-center mt-3" style="color: var(--amg-blue); font-size: 0.9rem;">
+            Operable at speeds up to 60 km/h in just 15 seconds
+        </p>
+    </div>
+
+    <!-- SL Features -->
+    <div class="sl-features">
+        <h3 class="section-title">Roadster Features</h3>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-label">Engine</div>
+                <div class="feature-value">4.0L V8 Biturbo</div>
+                <p class="mt-2" style="color: rgba(245, 245, 245, 0.7);">Handcrafted AMG engine delivering 585 hp and 800 Nm torque.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">Transmission</div>
+                <div class="feature-value">AMG SPEEDSHIFT MCT</div>
+                <p class="mt-2" style="color: rgba(245, 245, 245, 0.7);">9-speed multi-clutch transmission with wet start-off clutch.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">Drive System</div>
+                <div class="feature-value">AMG Performance 4MATIC+</div>
+                <p class="mt-2" style="color: rgba(245, 245, 245, 0.7);">Fully variable all-wheel drive with rear-biased torque distribution.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">Suspension</div>
+                <div class="feature-value">AMG ACTIVE RIDE CONTROL</div>
+                <p class="mt-2" style="color: rgba(245, 245, 245, 0.7);">Fully active hydropneumatic system with anti-roll stabilization.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">Chassis</div>
+                <div class="feature-value">Aluminum Space Frame</div>
+                <p class="mt-2" style="color: rgba(245, 245, 245, 0.7);">Lightweight aluminum-intensive structure for optimal rigidity.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-label">Comfort</div>
+                <div class="feature-value">AIRSCARF & AIRCAP</div>
+                <p class="mt-2" style="color: rgba(245, 245, 245, 0.7);">Neck-level heating and wind deflector for year-round comfort.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance Features -->
+    <div class="sl-features">
+        <h3 class="section-title">Roadster Performance</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="feature-item mb-3">
+                    <div class="feature-label">Acceleration</div>
+                    <div class="feature-value">0-100 km/h: 3.6s</div>
+                    <p style="color: rgba(245, 245, 245, 0.7); font-size: 0.9rem;" class="mt-2">Lightning-fast acceleration with the top down or up.</p>
+                </div>
+                <div class="feature-item mb-3">
+                    <div class="feature-label">Driving Modes</div>
+                    <div class="feature-value">6 AMG DYNAMIC SELECT</div>
+                    <p style="color: rgba(245, 245, 245, 0.7); font-size: 0.9rem;" class="mt-2">Slippery, Comfort, Sport, Sport+, Individual, and Race.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-item mb-3">
+                    <div class="feature-label">Exhaust System</div>
+                    <div class="feature-value">AMG Performance</div>
+                    <p style="color: rgba(245, 245, 245, 0.7); font-size: 0.9rem;" class="mt-2">Adjustable exhaust with distinctive V8 sound character.</p>
+                </div>
+                <div class="feature-item mb-3">
+                    <div class="feature-label">Braking System</div>
+                    <div class="feature-value">AMG High-Performance</div>
+                    <p style="color: rgba(245, 245, 245, 0.7); font-size: 0.9rem;" class="mt-2">Compound braking system with 6-piston front calipers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <a href="booking.html" class="btn-sl-primary">CONFIGURE SL ROADSTER</a>
+        <a href="home.html" class="btn-sl-outline">HOME</a>
+        <a href="our_models.html" class="btn-sl-outline">OUR MODELS</a>
+    </div>
+</div>
+
+<!-- Luxury Footer -->
+<footer class="luxury-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h3 class="footer-brand">MERCEDES-AMG SL</h3>
+                <p class="mb-3" style="color: rgba(192, 192, 192, 0.8);">Since 1954, the SL has defined the luxury roadster segment. The new AMG SL continues this legacy with performance, luxury, and open-air freedom.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-heading">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="home.html" class="footer-link">Home</a></li>
+                    <li class="mb-2"><a href="our_models.html" class="footer-link">Our Models</a></li>
+                    <li class="mb-2"><a href="booking.html" class="footer-link">Buy Online</a></li>
+                    <li class="mb-2"><a href="service.html" class="footer-link">Service</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-heading">AMG Roadster Models</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="footer-link">AMG SL 63</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">AMG SL 55</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">AMG SL 43</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">AMG GT Roadster</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">AMG C 43 Cabriolet</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-heading">Roadster Services</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <i class="fas fa-umbrella-beach me-2" style="color: var(--amg-blue);"></i>
+                        Convertible Care
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-route me-2" style="color: var(--amg-blue);"></i>
+                        Scenic Route Planning
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-calendar-alt me-2" style="color: var(--amg-blue);"></i>
+                        Exclusive Events
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-wind me-2" style="color: var(--amg-blue);"></i>
+                        Wind Management
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <p class="mb-0 small" style="color: rgba(192, 192, 192, 0.6);">&copy; 2025 Mercedes-AMG. The SL Roadster - where performance meets open-air luxury.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class="footer-link" style="color: rgba(192, 192, 192, 0.6);">Heritage</a>
+                        <span class="mx-2" style="color: rgba(192, 192, 192, 0.3);">|</span>
+                        <a href="#" class="footer-link" style="color: rgba(192, 192, 192, 0.6);">Convertible Guide</a>
+                        <span class="mx-2" style="color: rgba(192, 192, 192, 0.3);">|</span>
+                        <a href="#" class="footer-link" style="color: rgba(192, 192, 192, 0.6);">SL Club</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.luxury-navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Create blue particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 25; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.width = Math.random() * 4 + 1 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+        particlesContainer.appendChild(particle);
+    }
+
+    // Counter animation for stats
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200;
+
+    const animateCounters = () => {
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(() => animateCounters(), 10);
+            } else {
+                counter.innerText = target;
+            }
+        });
+    };
+
+    // Trigger counter animation when stats section is in view
+    const statsSection = document.querySelector('.performance-stats');
+    if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(statsSection);
+    }
+
+    // Video autoplay on scroll
+    const video = document.querySelector('video');
+    if (video) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        videoObserver.observe(video);
+    }
+
+    // Add blue glow to buttons on hover
+    document.querySelectorAll('.btn-sl-primary').forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 0 30px rgba(0, 130, 179, 0.4)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '0 15px 35px rgba(0, 130, 179, 0.3)';
+        });
+    });
+
+    // Image error handling
+    document.querySelectorAll('img').forEach(img => {
+        img.onerror = function() {
+            this.style.display = 'none';
+            const fallback = document.createElement('div');
+            fallback.className = 'image-fallback';
+            fallback.textContent = this.alt || 'Image';
+            this.parentNode.insertBefore(fallback, this);
+        };
+    });
+
+    // Add dynamic blue accent to feature items on hover
+    document.querySelectorAll('.feature-item').forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 20px 50px rgba(0, 130, 179, 0.2)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '0 15px 40px rgba(0, 130, 179, 0.1)';
+        });
+    });
+
+    // Roof animation control
+    const roofAnimation = document.querySelector('.roof-animation');
+    let roofOpen = false;
+    
+    function toggleRoof() {
+        roofOpen = !roofOpen;
+        if (roofOpen) {
+            roofAnimation.style.animationPlayState = 'running';
+        } else {
+            roofAnimation.style.animationPlayState = 'paused';
+        }
+    }
+
+    // Animate roof on hover
+    if (roofAnimation) {
+        roofAnimation.addEventListener('mouseenter', toggleRoof);
+    }
+
+    // Convertible mode simulation
+    let convertibleMode = false;
+    const convertibleModeButton = document.createElement('button');
+    convertibleModeButton.className = 'btn-sl-outline position-fixed bottom-0 end-0 m-3';
+    convertibleModeButton.innerHTML = '<i class="fas fa-sun me-2"></i>TOP DOWN';
+    convertibleModeButton.style.zIndex = '1000';
+    document.body.appendChild(convertibleModeButton);
+
+    convertibleModeButton.addEventListener('click', function() {
+        convertibleMode = !convertibleMode;
+        if (convertibleMode) {
+            document.body.style.background = 'linear-gradient(135deg, #0A0A0A 0%, #001A33 100%)';
+            this.innerHTML = '<i class="fas fa-cloud me-2"></i>TOP UP';
+            this.classList.add('btn-sl-primary');
+            this.classList.remove('btn-sl-outline');
+        } else {
+            document.body.style.background = 'var(--amg-dark)';
+            this.innerHTML = '<i class="fas fa-sun me-2"></i>TOP DOWN';
+            this.classList.add('btn-sl-outline');
+            this.classList.remove('btn-sl-primary');
+        }
+    });
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
+
+    // Convertible badge animation
+    document.querySelectorAll('.convertible-badge').forEach(badge => {
+        badge.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+            this.style.boxShadow = '0 5px 15px rgba(0, 130, 179, 0.3)';
+        });
+        
+        badge.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'none';
+        });
+    });
+
+    // Wind sound effect on button click (simulated)
+    document.querySelectorAll('.btn-sl-primary').forEach(button => {
+        button.addEventListener('click', function() {
+            console.log('💨 Wind in your hair! Roof opening...');
+            
+            // Visual feedback
+            this.innerHTML = '<i class="fas fa-wind me-2"></i>ROOF OPERATING...';
+            setTimeout(() => {
+                this.innerHTML = 'CONFIGURE SL ROADSTER';
+            }, 1500);
+        });
+    });
+</script>
+</body>
+</html>
